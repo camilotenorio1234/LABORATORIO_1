@@ -1,0 +1,65 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+#define RESERVAR_MAS 1
+
+//JUAN CAMILO MUÑOZ TENORIO
+int main()
+{
+   //declaracion de un el arreglo dinamico de enteros:
+   
+   void* int_dyn_arr = NULL;
+   
+   int tam_inicial; //tamanio inicial
+   int incremento;
+   
+   tam_inicial = 5;
+   //incremento de memoria (entero):
+   
+   
+   //reserve un espacio en memoria inicial para 5 enteros:
+
+   int_dyn_arr = (int*)malloc((tam_inicial)*sizeof(int));
+   if(int_dyn_arr == NULL)printf("Nuestro arreglo es nulo");
+   
+   printf("Cantidad bloques de memoria inicales %d",tam_inicial);
+   printf("\nValor inicial del arreglo %d",int_dyn_arr);
+   
+   tam_inicial = 5;
+     
+   int sel = RESERVAR_MAS;
+   int aumento_reserva = 0;
+   do
+   {
+           printf("\nDesea reservar mas espacio? ");
+		   scanf("%d",&sel);
+		   if(sel == RESERVAR_MAS)
+		   {
+		       printf("Cuantos elementos desea agregar? ");
+			   scanf("\n%d", &incremento);
+			   aumento_reserva++;
+			
+		   }
+		   
+		   //reasignar memoria:
+		   int_dyn_arr = (int*)realloc(int_dyn_arr,(incremento)*sizeof(int));
+		   
+		   
+		   void* reasignacion = (int*)int_dyn_arr + incremento;
+		   void* menset = (int*)reasignacion +(int_dyn_arr + 4,3,8*sizeof(void));
+		
+		   
+		   void* cantidadbloques = (int*)(tam_inicial + incremento);
+
+           printf("Valor mas elementos sumados %d",reasignacion);
+           printf("\nLa cantidad de bloques de memoria es: %d",cantidadbloques);
+           printf("\n Valores agregados por funcion menset: %d",menset);
+         
+   }while(sel == RESERVAR_MAS);
+
+return 0;
+
+
+
+}
+
